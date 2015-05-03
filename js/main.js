@@ -20,11 +20,37 @@ function initialize() {
 }
 
 function sendMail() {
-	var name = $("#mail_name").val();
-	var email = $("#mail_email").val();
-	var message = $("#mail_message").val();
+	var err = false;
 	
-	alert(name);
-	alert(email);
-	alert(message);
+	if($("#mail_name").val().trim() == "") {
+		err = true;
+	}
+	
+	if($("#mail_email").val().trim() == "") {
+		err = true;
+	}
+	
+	if($("#mail_message").val().trim() == "") {
+		err = true;
+	}
+
+	if(err) {
+		// alert("All fields must be filled");
+		$.growl.error({title: "Error!", message:"All fields must be filled"});
+		return;
+	}
+	
+	$.ajax({
+		url : "../scripts_mail/mail.php",
+		dataType : "JSON",
+		data : $(".SendMail").serialize(),
+		type : "POST"
+	}).done(function(data) {
+		if(data.success) {
+			$(".SendMail").val("");
+			$.growl.notice({message: data.message });
+		} else {
+			$.growl.error({ message: data.message });
+		}
+	});
 }
