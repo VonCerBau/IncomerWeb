@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Incomer Latinoamerica</title>
+		<title>Incomer_Latinoamerica</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -12,6 +12,7 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+		
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -23,29 +24,7 @@
 		
 		<!--GoogleMaps-->
 		<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
-		
-		<script type="text/javascript"><!--
-    		function initialize() {
-        	var latlng = new google.maps.LatLng(19.3752907, -99.18534979999998);
-        	var settings = {
-            	zoom: 15,
-            	center: latlng,
-            	mapTypeControl: true,
-            	mapTypeControlOptions: {style: google.maps.MapTypeControlStyle.DROPDOWN_MENU},
-            	navigationControl: true,
-            	navigationControlOptions: {style: google.maps.NavigationControlStyle.SMALL},
-            	mapTypeId: google.maps.MapTypeId.ROADMAP
-    		};
-    		
-    		var map = new google.maps.Map(document.getElementById("map_canvas"), settings);
-    		var companyPos = new google.maps.LatLng(19.3752907, -99.18534979999998);
-  			var companyMarker = new google.maps.Marker({
-      					position: companyPos,
-      					map: map,
-      					title:"Some title"
-  });
-    	}
-		</script>
+		<script src="js/main.js"></script>
 	</head>
 	<body onload="initialize()">
 	
@@ -283,7 +262,7 @@
 							<br/>
 							<br/>
 							<header>
-								<h2>We are proud members of  &nbsp;:</h2>
+								<h2><span class="icon fa-users icon-color"></span>&nbsp; We are proud members of  &nbsp;:</h2>
 							</header>
 							<div align=left>
 								<span class="icon fa-users icon-color"> &nbsp;<strong> W.A.D. &nbsp; :</strong>&nbsp; </span> World Association of Detectives,Inc.
@@ -363,19 +342,19 @@
 								<h2>Contact</h2>
 							</header>
 
-							<form method="post" action="#">
+							<form>
 								<div class="row 50%">
-									<div class="6u"><input type="text" name="name" placeholder="Name" /></div>
-									<div class="6u"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="6u"><input type="text" id="mail_name" name="name" placeholder="Name" class="SendMail"/></div>
+									<div class="6u"><input type="text" id="mail_email" name="email" placeholder="Email" class="SendMail" /></div>
 								</div>
 								<div class="row 50%">
 									<div class="12u">
-										<textarea name="message" placeholder="Message"></textarea>
+										<textarea name="message" id="mail_message" placeholder="Message" class="SendMail"></textarea>
 									</div>
 								</div>
 								<div class="row">
 									<div class="12u">
-										<input type="submit" value="Send Message" />
+										<input type="button" onclick="sendMail()" value="Send Message" />
 									</div>
 								</div>
 							</form>
