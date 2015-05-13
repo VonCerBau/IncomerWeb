@@ -30,6 +30,8 @@ function sendMail() {
 		err = true;
 	}
 	
+	var email = $("#mail_email").val().trim();
+	
 	if($("#mail_message").val().trim() == "") {
 		err = true;
 	}
@@ -37,6 +39,13 @@ function sendMail() {
 	if(err) {
 		// alert("All fields must be filled");
 		$.growl.error({title: "Error!", message:"All fields must be filled"});
+		return;
+	}
+	
+	var expre = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/;
+	
+	if(!expre.test(email)) {
+		$.growl.error({title: "Error!", message:"Must be a valid mail"});
 		return;
 	}
 	

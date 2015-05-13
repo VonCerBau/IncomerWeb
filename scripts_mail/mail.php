@@ -13,10 +13,10 @@
 	
 	if(!$ret) {
 		$data["success"] = false;
-		$data["message"] = "El mail no se envió";
+		$data["message"] = "Your message wasn't sent";
 	} else {
 		$data["success"] = true;
-		$data["message"] = "El mail se envió correctamente";
+		$data["message"] = "Your message was sent";
 	}
 	
 	echo json_encode($data);
